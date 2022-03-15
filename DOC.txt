@@ -9,6 +9,12 @@ python -m spacy download de_core_news_sm
 python -m spacy download en_core_web_sm
 pip install -U matplotlib
 
+alternatively: install from environment.yml It will fail when catching the spacy languages. After that:
+conda activate opitz-transformer
+python -m spacy download de_core_news_sm
+python -m spacy download en_core_web_sm
+pip install -U matplotlib
+
 # FNet Training
 Time = 16:36 - 17:48 100 Epochs ~72minutes
 Epoch Time: 43 Seconds
