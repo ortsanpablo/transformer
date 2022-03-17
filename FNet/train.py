@@ -130,17 +130,17 @@ def run(total_epoch, best_loss):
 
         if valid_loss < best_loss:
             best_loss = valid_loss
-            torch.save(model.state_dict(), 'FNet/saved/FNetmodel-{0}.pt'.format(valid_loss))
+            torch.save(model.state_dict(), 'FNet/saved/lowres3FNetmodel-{0}.pt'.format(valid_loss))
 
-        f = open('FNet/result/train_loss.txt', 'w')
+        f = open('FNet/result/lowres3train_loss.txt', 'w')
         f.write(str(train_losses))
         f.close()
 
-        f = open('FNet/result/bleu.txt', 'w')
+        f = open('FNet/result/lowres3bleu.txt', 'w')
         f.write(str(bleus))
         f.close()
 
-        f = open('FNet/result/test_loss.txt', 'w')
+        f = open('FNet/result/lowres3test_loss.txt', 'w')
         f.write(str(test_losses))
         f.close()
 
@@ -154,7 +154,7 @@ def run(total_epoch, best_loss):
     train_time_end = time.time()
     train_min, train_sec = epoch_time(train_time, train_time_end)
     cuda_mem = torch.cuda.max_memory_allocated()
-    f = open('FNet/result/timememory.txt', 'w')
+    f = open('FNet/result/lowres3timememory.txt', 'w')
     f.write("trainable parameters: " + str(count_parameters(model)) +" Training Time: " + str(train_min)+"m "+str(train_sec)+"s " + "tracemalloc peak: " + str(peakm) + " cuda_max Peak: " + str(cuda_mem))
     f.close()
 

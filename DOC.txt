@@ -104,3 +104,110 @@ during evaluation
 | 62%   54C    P3    37W / 200W |   7790MiB /  8192MiB |      2%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
+
+
+----------------------------------------------------------------------------------------
+Low Resource ATTENTION: GTX 970 Ti 4Gb(3.5 + 0.5) VRAM
+Parameters:
+# model parameter setting
+batch_size = 128
+max_len = 512
+d_model = 512
+n_layers = 6
+n_heads = 8
+ffn_hidden = 2048
+drop_prob = 0.1
+
+# optimizer parameter setting
+init_lr = 1e-5
+factor = 0.9
+adam_eps = 5e-9
+patience = 10
+warmup = 10
+epoch = 100
+clip = 1.0
+weight_decay = 5e-4
+inf = float('inf')
+
+This resolves in a out of memory, which was to be expected. This exact setup peaked at 5.5GB allocated VRAM.
+
+# model parameter setting
+batch_size = 64
+max_len = 64
+d_model = 512
+n_layers = 6
+n_heads = 8
+ffn_hidden = 2048
+drop_prob = 0.1
+
+# optimizer parameter setting
+init_lr = 1e-5
+factor = 0.9
+adam_eps = 5e-9
+patience = 10
+warmup = 10
+epoch = 100
+clip = 1.0
+weight_decay = 5e-4
+inf = float('inf')
+
+OOM
+
+--------------------------------------------------------------------
+Low Resource FNet: GTX 970 Ti 4Gb(3.5 + 0.5) VRAM
+
+# model parameter setting
+batch_size = 64
+max_len = 64
+d_model = 512
+n_layers = 6
+n_heads = 8
+ffn_hidden = 2048
+drop_prob = 0.1
+
+# optimizer parameter setting
+init_lr = 1e-5
+factor = 0.9
+adam_eps = 5e-9
+patience = 10
+warmup = 10
+epoch = 100
+clip = 1.0
+weight_decay = 5e-4
+inf = float('inf')
+OOM in 21st epoch, produces a model with about 8 BLEU
+
+----------------------------------------------------------
+# model parameter setting
+batch_size = 128
+max_len = 512
+d_model = 256
+n_layers = 6
+n_heads = 8
+ffn_hidden = 1024
+drop_prob = 0.1
+
+Both ATT and FNet OOM
+
+lowres2 Experiments:
+# model parameter setting
+batch_size = 128
+max_len = 512
+d_model = 256
+n_layers = 4
+n_heads = 8
+ffn_hidden = 1024
+drop_prob = 0.1
+
+lowres3 Experiments:
+# model parameter setting
+batch_size = 128
+max_len = 512
+d_model = 256
+n_layers = 4
+n_heads = 8
+ffn_hidden = 2048
+drop_prob = 0.1
+
+ATT OOM
+FNet BLEU 20

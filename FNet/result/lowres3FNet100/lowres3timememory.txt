@@ -1,0 +1,1 @@
+trainable parameters: 16059821 Training Time: 99m 48s tracemalloc peak: 9290001 cuda_max Peak: 2648009728
