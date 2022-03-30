@@ -20,15 +20,15 @@ def read(name):
 
 def draw(mode):
     if mode == 'loss':
-        train = read('FNet/result/train_loss.txt')
-        test = read('FNet/result/test_loss.txt')
+        train = read('./FNet/result/lowres3FNet100/lowres3train_loss.txt')
+        test = read('./FNet/result/lowres3FNet100/lowres3test_loss.txt')
         plt.plot(train, 'r', label='train')
         plt.plot(test, 'b', label='validation')
         plt.legend(loc='lower left')
 
 
     elif mode == 'bleu':
-        bleu = read('FNet/result/bleu.txt')
+        bleu = read('./FNet/result/lowres3FNet100/lowres3bleu.txt')
         plt.plot(bleu, 'b', label='bleu score')
         plt.legend(loc='lower right')
 
